@@ -1,0 +1,44 @@
+# File Name: makefile.test
+# Author: Sunny Taksande
+# Date: 27 June 2011
+# Purpose: makefile for building test application for
+#          master slave sensor communicaton.
+
+# Set appropriate paths
+
+
+#PROJECTPATH	= $(HOME)/project/sensor
+
+INSTALLDIR      = ./
+PROJECTPATH     = ./
+
+
+TESTAPPPATH	= $(PROJECTPATH)/test
+BINPATH		= $(PROJECTPATH)/bin
+TARGETPATH	= $(BINPATH)
+
+LIBS            = $(LIBPATH)/libi2c.a
+TARGETS		= $(TARGETPATH)/test
+
+SRCFILES 	= $(TESTAPPPATH)/test.c
+
+DEPENDANCIES	= makefile.test 
+		 
+# Compilation Flags
+
+CC		= /media/_home/aurion/ruiva-dm355-dvsdk2/montavista/pro/devkit/arm/v5t_le/bin/arm_v5t_le-gcc
+CFLAGS		=  
+INCLUDEFLAGS    = -I /home/biren/DM355/DM355_gpio/include
+LIBFLAGS        = -L /home/biren/DM355/DM355_gpio/lib -li2c -lpthread
+
+# Compilation Section
+
+all: $(TARGETS)
+
+$(TARGETPATH)/test: $(DEPENDANCIES) $(SRCFILES)
+	$(CC) $(CFLAGS) $(SRCFILES) $(INCLUDEFLAGS) $(LIBFLAGS) -o $@
+
+# Cleaning Section
+
+clean:
+	rm -f $(TARGETS)

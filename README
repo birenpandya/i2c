@@ -1,0 +1,15 @@
+
+
+DM355_gpio
+
+: gpio read on chris dm355 board usig i2c . 
+
+to compile i2c lib.
+
+	make 
+
+to genrate test code for i2c lib .
+
+	make -f makefile.test 
+ 
+
